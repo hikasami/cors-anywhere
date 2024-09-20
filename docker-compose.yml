@@ -1,0 +1,12 @@
+version: '3'
+services:
+  cors-anywhere:
+    build: .
+    ports:
+      - "80:8080"  # Mapeia a porta 8080 do container para a porta 8080 da máquina host
+    environment:
+      - HOST=0.0.0.0  # Permite escutar em todas as interfaces
+      - PORT=8080     # Porta da aplicação
+      - CORSANYWHERE_BLACKLIST=bad-site.com,malicious.com  # Lista de domínios bloqueados (pode ser customizado)
+      - CORSANYWHERE_WHITELIST=trusted-site.com           # Lista de domínios permitidos (pode ser customizado)
+      - CORSANYWHERE_RATELIMIT=100                        # Limitação de taxa de requests por hora
